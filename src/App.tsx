@@ -6,15 +6,19 @@ export function App() {
   // Hace un hook (enganchar) el estado del componente
   const [data, setData] = useState([]);
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const fetchData = async () => {
     try {
+      setLoading(true);
       const response = await fetch(
         "https://jsonplaceholder.typicode.com/posts"
       );
       const json = await response.json();
       setData(json);
+      setLoading(false);
     } catch (error) {
+      setLoading(false);
       setError('Failed to fetch data');
     }
   };
@@ -58,6 +62,8 @@ export function App() {
   return (
     <>
       <div>
+        {loading && <p className="text-blue-500">Loading...</p>}
+        {error && <p className="text-red-500">{error}</p>}
         {data.map((item: any) => (
   
           <div key={item.id} className="p-4 m-2 border rounded shadow">
