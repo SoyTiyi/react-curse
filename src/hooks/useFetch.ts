@@ -9,7 +9,7 @@ interface Params<T> {
   error: ErrorType;
 }
 
-function useFetch<T>(url: string): Params<T> {
+export function useFetch<T>(url: string): Params<T> {
   const [data, setData] = useState<Data<T>>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<ErrorType>(null);
