@@ -3,9 +3,15 @@ import { useFetch } from "./hooks";
 
 const url = "https://jsonplaceholder.typicode.com/posts";
 
+interface Post {
+  id: number;
+  title: string;
+  body: string;
+}
+
 export function App() {
 
-  const { data, loading, error } = useFetch<any[]>(url);
+  const { data, loading, error } = useFetch<Post[]>(url);
   
 
   if (loading) {
