@@ -15,6 +15,7 @@ export function useFetch<T>(url: string): Params<T> {
   const [error, setError] = useState<ErrorType>(null);
 
   useEffect(() => {
+    setLoading(true);
     const fetchData = async () => {
       try {
         const response = await fetch(url);
@@ -25,6 +26,7 @@ export function useFetch<T>(url: string): Params<T> {
 
         const jsonData: T = await response.json();
         setData(jsonData);
+        setError(null);
       } catch (err) {
         setError(err as Error);
       } finally {
