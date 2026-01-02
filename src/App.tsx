@@ -1,5 +1,4 @@
 import "./index.css";
-import { Button } from "./components";
 import { useState, useEffect } from "react";
 
 export function App() {
@@ -9,17 +8,22 @@ export function App() {
   const [loading, setLoading] = useState(false);
 
   const fetchData = async () => {
+    setLoading(true);
     try {
-      setLoading(true);
       const response = await fetch(
         "https://jsonplaceholder.typicode.com/posts"
       );
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      
       const json = await response.json();
       setData(json);
-      setLoading(false);
     } catch (error) {
+      setError(error as string);
+    } finally {
       setLoading(false);
-      setError('Failed to fetch data');
     }
   };
 
@@ -59,13 +63,18 @@ export function App() {
   //Hay veces que se pueden usar mas de dos useEffect en un mismo componente
   //Tener uno para montar, uno para cambiar data, etc
 
+  if (loading) {
+    return <p className="text-blue-500">Loading...</p>;
+  }
+
+  if (error) {
+    return <p className="text-red-500">{error}</p>;
+  }
+
   return (
     <>
       <div>
-        {loading && <p className="text-blue-500">Loading...</p>}
-        {error && <p className="text-red-500">{error}</p>}
         {data.map((item: any) => (
-  
           <div key={item.id} className="p-4 m-2 border rounded shadow">
             <h3 className="font-bold text-lg">{item.title}</h3>
             <p>{item.body}</p>
