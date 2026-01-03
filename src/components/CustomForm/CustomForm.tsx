@@ -2,7 +2,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm, type SubmitHandler } from "react-hook-form";
 import InputForm from "./components/InputForm";
 import "./CustomForm.css";
-import { schema, type FormValues } from "./schemas/form.model";
+import { schema, type FormValues } from "./schemas";
 
 const CustomForm = () => {
   // En este ejemplo no queremos tener multiples states para cada campo del formulario,
