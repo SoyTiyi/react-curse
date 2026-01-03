@@ -1,5 +1,5 @@
 import "./Button.css";
-import type { ReactNode } from "react";
+import  {type ReactNode } from "react";
 
 interface ButtonProps {
   children: ReactNode;
@@ -17,6 +17,7 @@ export const RedButton = ( { children } : ButtonChildrenProps) => {
 export function Button({ children, parentMethod }: ButtonProps) {
   return (
     <button className="custom-button" onClick={parentMethod}>
+
       {children}
     </button>
   );
