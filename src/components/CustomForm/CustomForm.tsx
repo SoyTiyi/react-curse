@@ -1,25 +1,8 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm, type SubmitHandler } from "react-hook-form";
-import { z } from "zod";
 import InputForm from "./components/InputForm";
 import "./CustomForm.css";
-
-const schema = z
-  .object({
-    name: z.string().min(1, "Name is required"),
-    email: z.email("Invalid email address").min(1, "Email is required"),
-    password: z.string().min(5, "Password must be at least 5 characters long"),
-    confirmPassword: z
-      .string()
-      .min(5, "Confirm Password must be at least 5 characters long"),
-  })
-  .refine((data) => data.password === data.confirmPassword, {
-    message: "Passwords don't match",
-    path: ["confirmPassword"],
-  });
-
-//Aca se acaba de generar un tipado de TypeScript a partir del esquema de validación definido con Zod.
-type FormValues = z.infer<typeof schema>;
+import { schema, type FormValues } from "./schemas/form.model";
 
 const CustomForm = () => {
   // En este ejemplo no queremos tener multiples states para cada campo del formulario,

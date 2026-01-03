@@ -1,9 +1,10 @@
 import { Controller, type Control, type FieldError } from "react-hook-form";
 import "./InputForm.css";
+import { type FormValues } from "../schemas/form.model";
 
 interface Props {
-  name: string;
-  control: Control<any>;
+  name: keyof FormValues;
+  control: Control<FormValues>;
   label: string;
   type?: string;
   error?: FieldError;
