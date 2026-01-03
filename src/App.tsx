@@ -1,21 +1,32 @@
 import "./index.css";
-import { Button } from "./components/Button/Button";
-import { createContext } from "react";
-import { useState } from "react";
-
-export const ProjectContext = createContext({});
+import { GlobalContextProvider } from "./context/global.context";
+import { Button, RedButton } from "./components";
 
 export function App() {
-  const [projectContextValue, setProjectContextValue] = useState(false);
+  const submit = () => {
+    console.log("Button clicked");
+  };
+
+  const handleClick = () => {
+    console.log("Uy you click me!");
+  };
+
+  const helloAlert = () => {
+    alert("Hello from App component!");
+  };
 
   return (
-    <ProjectContext.Provider
-      value={{ projectContextValue, setProjectContextValue }}
-    >
-      {
-        //<CustomForm />\
-      }
-    </ProjectContext.Provider>
+    <GlobalContextProvider>
+      <RedButton>
+        <Button parentMethod={helloAlert}>
+          Red Button
+        </Button>
+      </RedButton>
+
+      <Button parentMethod={handleClick}>
+        Normal Button
+      </Button>
+    </GlobalContextProvider>
   );
 }
 
