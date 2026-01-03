@@ -5,14 +5,14 @@ import { createContext, useContext, useState, type ReactNode } from "react";
 //En el caso donde sean padre hijo deberiamos de usar Composition Pattern
 
 interface GlobalContextType {
-  value: number;
+  value: number | null;
   setValue: React.Dispatch<React.SetStateAction<number>>;
 }
 
 const EmptyGlobalState: number = 0;
 
 export const GlobalContext = createContext<GlobalContextType>({
-  value: 0,
+  value: null,
   setValue: () => {},
 });
 
