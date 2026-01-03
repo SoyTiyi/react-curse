@@ -1,14 +1,23 @@
 import "./Button.css";
+import type { ReactNode } from "react";
 
 interface ButtonProps {
-  label: string;
+  children: ReactNode;
   parentMethod: () => void;
 }
 
-export function Button({ label, parentMethod }: ButtonProps) {
+interface ButtonChildrenProps {
+  children: ReactNode;
+}
+
+export const ChildrenButton = ( { children } : ButtonChildrenProps) => {
+  return <div className="red-button">{children}</div>;
+}
+
+export function Button({ children, parentMethod }: ButtonProps) {
   return (
     <button className="custom-button" onClick={parentMethod}>
-      {label}
+      {children}
     </button>
   );
 }
