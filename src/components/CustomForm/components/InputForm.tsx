@@ -1,4 +1,5 @@
 import { Controller, type Control, type FieldError } from "react-hook-form";
+import "./InputForm.css";
 
 interface Props {
   name: string;
@@ -8,11 +9,11 @@ interface Props {
   error?: FieldError;
 }
 
-const CustomInput = ({
+const InputForm = ({
   name,
   control,
   label,
-  type = "text",
+  type,
   error,
 }: Props) => {
   return (
@@ -37,4 +38,4 @@ const CustomInput = ({
   );
 };
 
-export default CustomInput;
+export default InputForm;

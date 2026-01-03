@@ -1,7 +1,8 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm, type SubmitHandler } from "react-hook-form";
 import { z } from "zod";
-import CustomInput from "./components/CustomInput";
+import InputForm from "./components/InputForm";
+import "./CustomForm.css";
 
 const schema = z
   .object({
@@ -39,33 +40,44 @@ const CustomForm = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      // Composition Pattern: Usamos el componente CustomInput para cada campo
-      del formulario, pasando las props necesarias como name, control, label y
-      error.
-      <CustomInput
+      {
+        // Composition Pattern: Usamos el componente CustomInput para cada campo
+        //del formulario, pasando las props necesarias como name, control, label y
+        //error.
+      }
+      <InputForm
         name="name"
         control={control}
         label="Name"
         error={errors.name}
+        type="text"
       />
-      <CustomInput
+      <InputForm
         name="email"
         control={control}
         label="Email"
         error={errors.email}
+        type="email"
       />
-      <CustomInput
+      <InputForm
         name="password"
         control={control}
         label="Password"
         error={errors.password}
+        type="password"
       />
-      <CustomInput
+      <InputForm
         name="confirmPassword"
         control={control}
         label="Confirm Password"
         error={errors.confirmPassword}
+        type="password"
       />
+      <button className="submit-button" type="submit">
+        Submit
+      </button>
     </form>
   );
 };
+
+export default CustomForm;
