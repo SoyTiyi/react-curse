@@ -11,9 +11,7 @@ import { Button, ChildrenButton } from "./components";
 // }
 
 export function App() {
-
   // const { data, loading, error } = useFetch<Post[]>(url);
-  
 
   // if (loading) {
   //   return <p className="text-blue-500">Loading...</p>;
@@ -42,22 +40,22 @@ export function App() {
         ))}
       </div> */}
 
-
-      {// Prop drilling example
-      // Literalmente lo que estamos haciendo es pasar una informacion y del button pasarselo al children
-      // Con este esquema Button si o si va a estar como puente
-      // App - Button - Button
-      // Para solucionar esto se podria usar servicios
+      {
+        // Prop drilling example
+        // Literalmente lo que estamos haciendo es pasar una informacion y del button pasarselo al children
+        // Con este esquema Button si o si va a estar como puente
+        // App - Button - Button
+        // Para solucionar esto se podria usar servicios
       }
-      <Button parentMethod={alertClick} >
+      <Button parentMethod={alertClick}>
         <ChildrenButton>
           <span className="text-white">Click Me!</span>
         </ChildrenButton>
       </Button>
 
-      <Button parentMethod={handleClick} >
+      <Button parentMethod={handleClick}>
         <p>Normal Button</p>
-        </Button>
+      </Button>
     </>
   );
 }
