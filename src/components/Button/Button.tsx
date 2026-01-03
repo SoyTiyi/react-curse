@@ -10,7 +10,7 @@ interface ButtonChildrenProps {
   children: ReactNode;
 }
 
-export const ChildrenButton = ( { children } : ButtonChildrenProps) => {
+export const RedButton = ( { children } : ButtonChildrenProps) => {
   return <div className="red-button">{children}</div>;
 }
 

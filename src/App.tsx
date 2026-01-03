@@ -1,6 +1,6 @@
 import "./index.css";
 // import { useFetch } from "./hooks";
-import { Button, ChildrenButton } from "./components";
+import { Button, RedButton } from "./components";
 
 // const url = "https://jsonplaceholder.typicode.com/posts";
 
@@ -47,11 +47,9 @@ export function App() {
         // App - Button - Button
         // Para solucionar esto se podria usar servicios
       }
-      <Button parentMethod={alertClick}>
-        <ChildrenButton>
-          <span className="text-white">Click Me!</span>
-        </ChildrenButton>
-      </Button>
+        <RedButton>
+          <Button parentMethod={alertClick}>Click Me!</Button>
+        </RedButton>
 
       <Button parentMethod={handleClick}>
         <p>Normal Button</p>
